@@ -1,130 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600&display=swap');
 
-.App{
+.app-wrapper{
   font-family: 'Hind Siliguri', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
+  width: 1020px;
 }
 li{
   list-style: none;
 }
-
-
-.header_wrapper{
+a {
+  text-decoration: none;
+}
+.app-wrapper-content{
   display: flex;
-  height: 60px;
-  max-width: 1020px;
-  align-items: center;
-  border-bottom: solid 6px #323746;
-  background-color: rgb(54,93,152);
-}
-.header_logo{
-  width: 5%;
-  margin-left: 3%;
-}
-.header_logo img{
-  width: 100%;
-  font-size: 24px;
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing :0.1px;
-  cursor: pointer;
-}
-.header_nav_wrapper{
-  width: 20%;
-}
-.header_nav_wrapper ul{
-  display: flex;
-  justify-content: space-around;
-}
-.header_nav_item{
-  font-size: 28px;
-}
-.header_nav_icon{
-  height: 18px;
-  width: 18px;
-  cursor: pointer;
-}
-.header_nav_list_text_wraper{
-  width: 50%;
-}
-.header_nav_list_text{
-  color: rgb(156,179,213);
-  font-size: 1.1rem;
-  display: flex;
-  justify-content: space-around;
-}
-.header_nav_list_text_item{
-  cursor: pointer;
-}
-.menu_wrapper{
-  width: 1020px;
-  height: 50px;
-  background-color: rgb(28,29,34);
-  border-bottom: 2px solid #323746;
-}
-.menu_container{
-  display: flex;
-}
-.menu_user{
-  height: 100%;
-  width: 50px;
-  align-items: center;
-}
-
-
-.content_wrapper{
-  color: rgb(240,241,245);
-  width: 1020px;
-  background-color: rgb(28,29,34);
-  display: flex;
-  justify-content: flex-start;
-}
-.content_user{
-  width: 20%;
-}
-.content_user_icon{
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-.content_item{
-  width: 75%;
-}
-.content_item_wrapper{
-  width: 80%;
-  justify-content: center;
-  display: flex;
-  
-}
-.content_item_input{
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-.content_item_button{
-  width: 10%;
-}
-.content_item_button , .content_item_area{
-  border: none;
-  outline: none;
-  border-radius: 3px;
-}
-.content_item_area {
-  width: 100%;
-  height: 50px;
-  background: rgb(245, 247, 255);
-  color:rgb(82, 82, 75);
-  border-radius: 10px;
-  box-shadow: 0px -5px 50px rgba(60, 79, 143, 0.4);
-}
-.content_item_button{
-  height: 70%;
-  width: 60px;
-  position: absolute;
-  top: 16%;
-  right: 5px;
-  background: #F15B42;
-  cursor: pointer;
-  color: rgb(245, 247, 255);
-
+  flex-direction: unset;
 }
