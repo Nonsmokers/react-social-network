@@ -1,3 +1,5 @@
+import { render_entire_tree } from "../render";
+
 let state = {
     profile_page: {
         posts: [
@@ -28,7 +30,8 @@ export let add_post= (post_message)=>{
         id:5,
         message: post_message,
     };
-    state.profile_page.posts.push(new_post)
+    state.profile_page.posts.push(new_post);
+    render_entire_tree(state);
 };
 
 export default state;

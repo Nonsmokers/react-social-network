@@ -3,14 +3,12 @@ import s from '../Profile.module.css'
 import Post from './Post/Post';
 
 const Posts_area = (props) => {
-
   let post_elements = props.posts.map(p => <Post message={p.message} id={p.id} />)
-
   let new_post_element = React.createRef();
-
   let add_post = () =>{
     let text = new_post_element.current.value;
     props.add_post(text);
+    new_post_element.current.value = '';
   }
 
   return (
