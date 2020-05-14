@@ -1,28 +1,31 @@
 import React from 'react';
 import s from './Dialogs.module.css';
-import Dialog_Item from './Dialog_Item'
+import Dialog_Item from './Dialog_item/Dialog_Item'
+import Message from './Message/Message'
 
+const Dialogs = (props) => {
 
-const Message = (props) =>{
-  return(
-    <div className={s.message}>{props.message}</div>
-  )
-}
+  let dialogs_elements = props.state.dialogs.map((d) => <Dialog_Item name={d.name} id={d.id} />)
+  let messages_elements = props.state.messages.map((m) => <Message message={m.message} />)
 
-const Dialogs = (props) =>{
-return(
+  let new_message_element = React.createRef();
+
+  let add_message = () =>{
+    let text = new_message_element.current.value;
+    console.log(text);
+  }
+
+  return (
     <div className={s.wrapper}>
       <div className={s.list}>
-        <Dialog_Item name='Ilona' id='1'/>
-        <Dialog_Item name='Sasha' id='2'/>
-        <Dialog_Item name='Andey' id='3'/>
-        <Dialog_Item name='Pete' id='4'/>
-        <Dialog_Item name='Nikoly' id='5'/>
+        {dialogs_elements}
       </div>
       <div className={s.message_block}>
-        <Message message='Hi'/>
-        <Message message='Hello, how are you?'/>
-        <Message message='Whats going on?' />
+        {messages_elements}
+        <div className={s.item_input}>
+          <textarea ref={new_message_element} className={s.item_area} type="textarea" type="text" rows="3" cols="35" placeholder="Write your message here..." />
+          <button onClick={add_message} className={s.item_button} type="submit">+</button>
+        </div>
       </div>
     </div>
   )

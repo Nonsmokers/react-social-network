@@ -7,8 +7,8 @@ const Post = (props) =>{
       <div className={s.user}>
         <img src='https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/user-male-icon.png'></img>
       </div>
-      <div className={s.massage_block}>
-        <p>{props.massage}</p>
+      <div className={s.message_block}>
+        <p>{props.message}</p>
       </div>
   </div>
   )

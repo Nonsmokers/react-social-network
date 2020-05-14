@@ -14,4 +14,5 @@ a {
 .app-wrapper-content{
   display: flex;
   flex-direction: unset;
+  min-height: 570px;
 }
