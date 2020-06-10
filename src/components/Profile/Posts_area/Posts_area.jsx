@@ -5,10 +5,16 @@ import Post from './Post/Post';
 const Posts_area = (props) => {
   let post_elements = props.posts.map(p => <Post message={p.message} id={p.id} />)
   let new_post_element = React.createRef();
-  let add_post = () =>{
-    let text = new_post_element.current.value;
-    props.add_post(text);
-    new_post_element.current.value = '';
+
+  let add_post = () => {
+    //props.add_post();
+    props.dispatch({ type: 'ADD_POST'});
+  }
+
+  let change_post = () => {
+    let new_text = new_post_element.current.value;
+    // props.update_post(text);
+    props.dispatch({ type: 'UPDATE_POST', text: new_text });
   }
 
   return (
@@ -16,7 +22,7 @@ const Posts_area = (props) => {
       <div className={s.item}>
         <h1 className={s.item_tittle}>My posts</h1>
         <div className={s.item_input}>
-          <input ref={new_post_element} className={s.item_area} type="text" aria-label="Enter a new post" placeholder="Write your post here..." />
+          <textarea onChange={change_post} ref={new_post_element} className={s.item_area} type="text" value={props.new_post} placeholder="Write your post here..."/>
           <button onClick={add_post} className={s.item_button} type="submit">+</button>
         </div>
       </div>
@@ -24,4 +30,5 @@ const Posts_area = (props) => {
     </div>
   )
 }
+
 export default Posts_area;
