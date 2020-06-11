@@ -5,7 +5,6 @@ import User_info from './User_info/User_info'
 import Posts_area from './Posts_area/Posts_area';
 
 const Profile = (props) => {
-
   return (
     <section className={s.wrapper}>
       <User_info />

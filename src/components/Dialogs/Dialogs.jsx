@@ -2,18 +2,24 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import Dialog_Item from './Dialog_item/Dialog_Item'
 import Message from './Message/Message'
+import { update_message_action_creator, add_message_action_creator } from '../../redux/state'
 
 const Dialogs = (props) => {
 
-  let dialogs_elements = props.state.dialogs.map((d) => <Dialog_Item name={d.name} id={d.id} />)
-  let messages_elements = props.state.messages.map((m) => <Message message={m.message} />)
+  let state = props.store.getState().dialogs_page;
 
-  let new_message_element = React.createRef();
+  let dialogs_elements = state.dialogs.map((d) => <Dialog_Item name={d.name} id={d.id} />)
+  let messages_elements = state.messages.map((m) => <Message message={m.message} />)
+  let new_message_text = state.new_message_text;
 
-  let add_message = () =>{
-    let text = new_message_element.current.value;
-    console.log(text);
+  let add_message = () => {
+    props.store.dispatch(add_message_action_creator())
   }
+  let change_message = (e) => {
+    let new_text = e.target.value;
+    props.store.dispatch(update_message_action_creator(new_text))
+  }
+
 
   return (
     <div className={s.wrapper}>
@@ -23,7 +29,11 @@ const Dialogs = (props) => {
       <div className={s.message_block}>
         {messages_elements}
         <div className={s.item_input}>
-          <textarea ref={new_message_element} className={s.item_area} type="textarea" type="text" rows="3" cols="35" placeholder="Write your message here..." />
+          <textarea onChange={change_message}
+            className={s.item_area}
+            type="textarea"
+            value={new_message_text}
+            placeholder="Write your message here..." />
           <button onClick={add_message} className={s.item_button} type="submit">+</button>
         </div>
       </div>

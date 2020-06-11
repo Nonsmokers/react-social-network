@@ -18,7 +18,7 @@ const App = (props)=>{
             profile_page={props.state.profile_page}
             dispatch={props.dispatch} />} />
           <Route path='/dialogs' render={() => <Dialogs
-            state={props.state.dialogs_page} />} />
+            store={props.store}/>} />
         </div>
       </div>
     </BrowserRouter>

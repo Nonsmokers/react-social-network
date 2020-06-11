@@ -1,6 +1,8 @@
 import React from 'react';
 import s from '../Profile.module.css'
 import Post from './Post/Post';
+import { add_post_action_creator, update_post_action_creator } from '../../../redux/state';
+
 
 const Posts_area = (props) => {
   let post_elements = props.posts.map(p => <Post message={p.message} id={p.id} />)
@@ -8,13 +10,13 @@ const Posts_area = (props) => {
 
   let add_post = () => {
     //props.add_post();
-    props.dispatch({ type: 'ADD_POST'});
+    props.dispatch(add_post_action_creator());
   }
 
   let change_post = () => {
     let new_text = new_post_element.current.value;
     // props.update_post(text);
-    props.dispatch({ type: 'UPDATE_POST', text: new_text });
+    props.dispatch(update_post_action_creator(new_text));
   }
 
   return (
@@ -22,7 +24,12 @@ const Posts_area = (props) => {
       <div className={s.item}>
         <h1 className={s.item_tittle}>My posts</h1>
         <div className={s.item_input}>
-          <textarea onChange={change_post} ref={new_post_element} className={s.item_area} type="text" value={props.new_post} placeholder="Write your post here..."/>
+          <textarea onChange={change_post}
+            ref={new_post_element}
+            className={s.item_area}
+            type="text"
+            value={props.new_post}
+            placeholder="Write your post here..." />
           <button onClick={add_post} className={s.item_button} type="submit">+</button>
         </div>
       </div>
