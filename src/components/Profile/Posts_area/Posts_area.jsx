@@ -1,7 +1,7 @@
 import React from 'react';
 import s from '../Profile.module.css'
 import Post from './Post/Post';
-import { add_post_action_creator, update_post_action_creator } from '../../../redux/state';
+import { add_post_action_creator, update_post_action_creator } from '../../../redux/profile_reducer';
 
 
 const Posts_area = (props) => {
