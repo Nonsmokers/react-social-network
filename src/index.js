@@ -1,5 +1,5 @@
 import * as serviceWorker from './serviceWorker';
-import store from './redux/store';
+import store from './redux/redux_store';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -13,7 +13,10 @@ let render_entire_tree = (state) => {
 
 render_entire_tree(store.getState);
 
-store.subscribe(render_entire_tree);
+store.subscribe(() => {
+    let state = store.getState();
+    render_entire_tree(state)
+});
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA

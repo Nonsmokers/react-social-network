@@ -1,7 +1,16 @@
 const ADD_POST = 'ADD_POST';
 const UPDATE_POST = 'UPDATE_POST';
 
-const profile_reducer = (state, action) => {
+let initial_state = {
+    posts: [
+        { id: 0, message: 'React components its perfect.' },
+        { id: 1, message: "Hello world!" },
+        { id: 2, message: "Hey friend, it's my first project." },
+    ],
+    new_post: ''
+}
+
+const profile_reducer = (state = initial_state, action) => {
 
     switch (action.type) {
         case ADD_POST:
