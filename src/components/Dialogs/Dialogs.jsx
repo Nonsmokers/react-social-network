@@ -2,24 +2,23 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import Dialog_Item from './Dialog_item/Dialog_Item'
 import Message from './Message/Message'
-import { update_message_action_creator, add_message_action_creator } from '../../redux/dialogs_reducer'
 
 const Dialogs = (props) => {
 
-  let state = props.store.getState().dialogs_page;
+  let state = props.dialogs_page;
 
   let dialogs_elements = state.dialogs.map((d) => <Dialog_Item name={d.name} id={d.id} />)
   let messages_elements = state.messages.map((m) => <Message message={m.message} />)
   let new_message_text = state.new_message_text;
 
   let add_message = () => {
-    props.store.dispatch(add_message_action_creator())
-  }
-  let change_message = (e) => {
-    let new_text = e.target.value;
-    props.store.dispatch(update_message_action_creator(new_text))
+    props.send_message();
   }
 
+  let change_message = (e) => {
+    let new_text = e.target.value;
+    props.update_message(new_text);
+  }
 
   return (
     <div className={s.wrapper}>

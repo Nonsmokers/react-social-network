@@ -4,10 +4,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { Provider } from 'react-redux';
 
-let render_entire_tree = (state) => {
+let render_entire_tree = () => {
     ReactDOM.render(
-        <App state={store.getState()} dispatch={store.dispatch.bind(store)} store={store} />,
+        <Provider store={store}>
+            <App state={store.getState()} dispatch={store.dispatch.bind(store)} store={store} />
+        </Provider>,
         document.getElementById('root'));
 }
 
