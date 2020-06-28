@@ -18,17 +18,19 @@ const profile_reducer = (state = initial_state, action) => {
                 id: 5,
                 message: state.new_post
             };
-
-            let copy_state = { ...state };
-            copy_state.posts = [ ...state.posts ];
-            copy_state.posts.push(new_post);
-            copy_state.new_post = '';
-            return copy_state;
+            let state_copy = {
+                ...state,
+                posts: [...state.posts, new_post],
+                new_post: '',
+            };
+            return state_copy;
         }
         case UPDATE_POST: {
-            let copy_state = { ...state };
-            copy_state.new_post = action.text;
-            return copy_state;
+            let state_copy = {
+                ...state,
+                new_post: action.text
+            };
+            return state_copy;
         }
         default:
             return state;
@@ -37,12 +39,12 @@ const profile_reducer = (state = initial_state, action) => {
 
 export const add_post_action_creator = () => {
     return {
-        type: 'ADD_POST',
+        type: ADD_POST,
     }
 }
 export const update_post_action_creator = (new_text) => {
     return {
-        type: 'UPDATE_POST',
+        type: UPDATE_POST,
         text: new_text,
     }
 }
