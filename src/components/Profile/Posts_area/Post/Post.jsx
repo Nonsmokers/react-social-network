@@ -1,11 +1,12 @@
 import React from 'react';
 import s from './Post.module.css'
+import user_icon from '../../../../assets/img/user-icon.png';
 
 const Post = (props) =>{
   return(
     <div className={s.item}>
       <div className={s.user}>
-        <img src='https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/user-male-icon.png'></img>
+        <img src={user_icon}></img>
       </div>
       <div className={s.message_block}>
         <p>{props.message}</p>

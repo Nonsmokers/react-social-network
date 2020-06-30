@@ -1,12 +1,12 @@
 import React from 'react';
 import s from './User_info.module.css'
-
+import user_icon from '../../../assets/img/user-icon.png';
 
 const User_info = () =>{
   return(
         <div className={s.user}>
     <div className={s.user_icon}>
-        <img src='https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/user-male-icon.png' alt='user'/>
+        <img src={user_icon} alt='user'/>
     </div>
     <div className={s.user_info}>
       <ul className={s.user_info_list}>
