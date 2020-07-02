@@ -9,3 +9,9 @@ span{
     font-size: 20px;
     font-weight: bold;
 }
+.users_page{
+    margin-left: 5%;
+}
+.hidden{
+    background: red;
+}
