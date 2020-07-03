@@ -31,7 +31,7 @@ class users_container_API extends React.Component {
 
     render() {
         return <>
-            {this.props.is_fetching ? <CircularProgress />  : null}
+            {this.props.is_fetching ? <CircularProgress/> : null}
             <Users total_users_count={this.props.total_users_count}
                    page_size={this.props.page_size}
                    current_page={this.props.current_page}
@@ -57,3 +57,4 @@ let mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
     follow, unfollow, set_users, set_current_page, set_total_users_count, toggle_is_fetching
 })(users_container_API);
+

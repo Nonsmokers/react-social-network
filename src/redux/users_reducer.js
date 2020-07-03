@@ -60,7 +60,7 @@ export const follow = (user_id) => ({type: FOLLOW, user_id})
 export const unfollow = (user_id) => ({type: UNFOLLOW, user_id})
 export const set_users = (users) => ({type: SET_USERS, users})
 export const set_current_page = (current_page) => ({type: SET_CURRENT_PAGE, current_page})
-export const set_total_users_count= (total_user_count) => ({type: SET_TOTAL_USERS_COUNT, count: total_user_count})
+export const set_total_users_count = (total_user_count) => ({type: SET_TOTAL_USERS_COUNT, count: total_user_count})
 export const toggle_is_fetching = (is_fetching) => ({type: TOGGLE_IS_FETCHING, is_fetching})
 
 export default users_reducer;
