@@ -4,6 +4,7 @@ import s from './User_info.module.css'
 import user_icon from '../../../assets/img/user-icon.png';
 */
 import CircularProgress from "@material-ui/core/CircularProgress";
+import user_icon from "../../../assets/img/user-icon.png";
 
 const User_info = (props) => {
     if (!props.profile) {
@@ -12,7 +13,7 @@ const User_info = (props) => {
     return (
         <div className={s.user}>
             <div className={s.user_icon}>
-                <img src={props.profile.photos.large} alt='user'/>
+                <img src={props.profile.photos.large != null ? props.profile.photos.large : user_icon} alt='user'/>
             </div>
             <div className={s.user_info}>
                 <ul className={s.user_info_list}>
