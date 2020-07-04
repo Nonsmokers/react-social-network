@@ -11,7 +11,9 @@ class users_container_API extends React.Component {
     componentDidMount() {
         this.props.toggle_is_fetching(true);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.current_page}
-        &count=${this.props.page_size}`)
+        &count=${this.props.page_size}`,{
+            withCredentials: true,
+        })
             .then(response => {
                 this.props.toggle_is_fetching(false);
                 this.props.set_users(response.data.items)
@@ -22,7 +24,8 @@ class users_container_API extends React.Component {
     change_page = (page_number) => {
         this.props.toggle_is_fetching(true);
         this.props.set_current_page(page_number)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page_number}&count=${this.props.page_size}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page_number}&count=${this.props.page_size}`,
+            {withCredentials: true})
             .then(response => {
                 this.props.toggle_is_fetching(false);
                 this.props.set_users(response.data.items)
