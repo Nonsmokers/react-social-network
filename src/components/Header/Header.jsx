@@ -7,7 +7,7 @@ import music from '../../assets/img/earphones.png'
 import world from '../../assets/img/world.png'
 import {NavLink} from 'react-router-dom';
 
-const Header = () => {
+const Header = (props) => {
     return (
         <header className={s.wrapper}>
             <div className={s.logo}>
@@ -32,7 +32,9 @@ const Header = () => {
                 </ul>
             </nav>
             <div className={s.login_wrapper}>
-                <NavLink to={'/login'} >Login</NavLink>
+                {props.is_auth ? props.login
+                    : <NavLink to={'/login'}>Login</NavLink>
+                }
             </div>
         </header>
     )

@@ -5,12 +5,13 @@ let initial_state = {
     email: null,
     login: null,
     is_fetching: false,
+    is_auth: false,
 }
 
 const auth_reducer = (state = initial_state, action) => {
     switch (action.type) {
         case SET_USER_DATA: {
-            return {...state, ...action.data }
+            return {...state, ...action.data , is_auth: true,}
         }
         default:
             return state;
