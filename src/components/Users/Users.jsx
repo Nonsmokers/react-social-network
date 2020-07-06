@@ -35,7 +35,9 @@ const Users = (props) => {
                         </div>
                         <div>
                             {u.followed
-                                ? <Button onClick={() => {
+                                ?
+                                <Button disabled={props.following_in_progress.some(id => id === u.id)} onClick={() => {
+                                    props.toggle_following_in_progress(true, u.id);
                                     axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
                                         withCredentials: true,
                                         headers: {
@@ -45,11 +47,14 @@ const Users = (props) => {
                                         .then(response => {
                                             if (response.data.resultCode === 0) {
                                                 props.unfollow(u.id)
+                                                props.toggle_following_in_progress(false, u.id);
                                             }
                                         })
                                 }}> unfollow </Button>
 
-                                : <Button onClick={() => {
+                                :
+                                <Button disabled={props.following_in_progress.some(id => id === u.id)} onClick={() => {
+                                    props.toggle_following_in_progress(true, u.id);
                                     axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
                                         withCredentials: true,
                                         headers: {
@@ -59,6 +64,7 @@ const Users = (props) => {
                                         .then(response => {
                                             if (response.data.resultCode === 0) {
                                                 props.follow(u.id)
+                                                props.toggle_following_in_progress(false, u.id);
                                             }
                                         })
                                 }}> follow</Button>
