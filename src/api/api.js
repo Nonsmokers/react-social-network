@@ -13,26 +13,23 @@ export const usersAPI = {
             .then(response => {
                 return response.data
             });
+    },
+    get_profile(user_id) {
+        return instance.get(`profile/` + user_id)
+    },
+    unfollow(user_id) {
+        return instance.delete(`follow/${user_id}`)
+    },
+    follow(user_id) {
+        return instance.post(`follow/${user_id}`)
+    }
+}
+export const authAPI = {
+    me(){
+      return instance.get(`auth/me`)
     }
 }
 
 //создать методы объекта, потом допилю
-/*export const unfollow = (u) => {
-    return instance.delete(`unfollow/${u.id}`)
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                unfollow(u)
-            }
-        })
-}
-
-export const follow = (u) => {
-    return instance.post(`follow/'${u.id}`)
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                follow(u.id)
-            }
-        })
-}*/
 
 

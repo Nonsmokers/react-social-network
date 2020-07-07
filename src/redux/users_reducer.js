@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -20,8 +22,7 @@ const users_reducer = (state = initial_state, action) => {
     switch (action.type) {
         case FOLLOW: {
             return {
-                ...state,
-                users: state.users.map(u => {
+                ...state, users: state.users.map(u => {
                     if (u.id === action.user_id) {
                         return {...u, followed: true}
                     }
@@ -56,8 +57,8 @@ const users_reducer = (state = initial_state, action) => {
             return {
                 ...state,
                 following_in_progress: action.is_fetching
-                ? [...state.following_in_progress, action.id]
-                : state.following_in_progress.filter(id=>id !=action.id)
+                    ? [...state.following_in_progress, action.id]
+                    : state.following_in_progress.filter(id => id != action.id)
             }
         }
 
@@ -66,12 +67,49 @@ const users_reducer = (state = initial_state, action) => {
     }
 }
 
-export const follow = (user_id) => ({type: FOLLOW, user_id})
-export const unfollow = (user_id) => ({type: UNFOLLOW, user_id})
+export const follow_success = (user_id) => ({type: FOLLOW, user_id})
+export const unfollow_success = (user_id) => ({type: UNFOLLOW, user_id})
 export const set_users = (users) => ({type: SET_USERS, users})
 export const set_current_page = (current_page) => ({type: SET_CURRENT_PAGE, current_page})
 export const set_total_users_count = (total_user_count) => ({type: SET_TOTAL_USERS_COUNT, count: total_user_count})
 export const toggle_is_fetching = (is_fetching) => ({type: TOGGLE_IS_FETCHING, is_fetching})
-export const toggle_following_in_progress = (is_fetching , id) => ({type: TOGGLE_IS_FOLLOWING, is_fetching, id})
+export const toggle_following_in_progress = (is_fetching, id) => ({type: TOGGLE_IS_FOLLOWING, is_fetching, id})
+
+export const get_users = (current_page, page_size) => {
+    return (dispatch) => {
+        dispatch(toggle_is_fetching(true));
+
+        usersAPI.get_users(current_page, page_size).then(data => {
+            dispatch(toggle_is_fetching(false))
+            dispatch(set_users(data.items))
+            dispatch(set_total_users_count(data.totalCount))
+        })
+    }
+}
+
+export const follow = (user_id) => {
+    return (dispatch) => {
+        dispatch(toggle_following_in_progress(true, user_id));
+        usersAPI.follow(user_id)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(follow_success(user_id));
+                }
+                dispatch(toggle_following_in_progress(false, user_id));
+            })
+    }
+}
+export const unfollow = (user_id) => {
+    return (dispatch) => {
+        dispatch(toggle_following_in_progress(true, user_id));
+        usersAPI.unfollow(user_id)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(unfollow_success(user_id));
+                }
+                dispatch(toggle_following_in_progress(false, user_id));
+            })
+    }
+}
 
 export default users_reducer;

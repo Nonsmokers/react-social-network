@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+
 const ADD_POST = 'ADD_POST';
 const UPDATE_POST = 'UPDATE_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
@@ -32,14 +34,17 @@ const profile_reducer = (state = initial_state, action) => {
     }
 }
 
-export const add_post_action_creator = () => {
-    return {type: ADD_POST}
-}
-export const update_post_action_creator = (new_text) => {
-    return {type: UPDATE_POST, text: new_text}
-}
-export const set_user_profile = (profile) => {
-    return {type: SET_USER_PROFILE, profile}
+export const add_post_action_creator = () => {return {type: ADD_POST}}
+export const update_post_action_creator = (new_text) => {return {type: UPDATE_POST, text: new_text}}
+export const set_user_profile = (profile) => {return {type: SET_USER_PROFILE, profile}}
+
+export const get_user_profile = (user_id) => {
+    return (dispatch) => {
+        usersAPI.get_profile(user_id)
+            .then(response => {
+                dispatch(set_user_profile(response.data))
+            })
+    }
 }
 
 export default profile_reducer;
