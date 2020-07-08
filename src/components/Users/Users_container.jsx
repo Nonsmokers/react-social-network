@@ -5,8 +5,9 @@ import {
     follow, unfollow, set_current_page, toggle_following_in_progress, get_users
 } from '../../redux/users_reducer';
 import CircularProgress from "@material-ui/core/CircularProgress";
+import {with_auth_redirect} from "../hoc/with_auth_redirect";
 
-class users_container_API extends React.Component {
+class users_container extends React.Component {
     componentDidMount() {
         this.props.get_users(this.props.current_page, this.props.page_size)
     }
@@ -42,8 +43,10 @@ let mapStateToProps = (state) => {
     }
 }
 
+let auth_redirect_component = with_auth_redirect(users_container)
+
 export default connect(mapStateToProps, {
     follow, unfollow, set_current_page,
     toggle_following_in_progress, get_users
-})(users_container_API);
+})(auth_redirect_component);
 

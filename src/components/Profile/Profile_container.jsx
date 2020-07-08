@@ -3,6 +3,7 @@ import Profile from "./Profile";
 import {connect} from "react-redux";
 import {get_user_profile} from "../../redux/profile_reducer";
 import {withRouter} from "react-router-dom";
+import {with_auth_redirect} from "../hoc/with_auth_redirect";
 
 class Profile_container extends React.Component {
     componentDidMount() {
@@ -21,12 +22,13 @@ class Profile_container extends React.Component {
     }
 }
 
+let auth_redirect_component = with_auth_redirect(Profile_container)
+
 let mapStateToProps = (state) => ({
-    profile: state.profile_page.profile
+    profile: state.profile_page.profile,
 })
 
 //Добавил ещё один контейнерный компонент для роутинга profile/user_id
-
-let with_url_data_container_component = withRouter(Profile_container);
+let with_url_data_container_component = withRouter(auth_redirect_component);
 
 export default connect(mapStateToProps, {get_user_profile})(with_url_data_container_component);
