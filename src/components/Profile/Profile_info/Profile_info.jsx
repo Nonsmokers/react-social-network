@@ -1,12 +1,13 @@
 import React from 'react';
-import s from './User_info.module.css'
+import s from './Profile_info.module.css'
 /*
 import user_icon from '../../../assets/img/user-icon.png';
 */
 import CircularProgress from "@material-ui/core/CircularProgress";
 import user_icon from "../../../assets/img/user-icon.png";
+import Profile_status from "./Profile_status";
 
-const User_info = (props) => {
+const Profile_info = (props) => {
     if (!props.profile) {
         return <CircularProgress/>
     }
@@ -17,6 +18,8 @@ const User_info = (props) => {
             </div>
             <div className={s.user_info}>
                 <ul className={s.user_info_list}>
+                    <li className={s.user_info_item}><Profile_status status={'Hello, i am boss'} /></li>
+
                     <li className={s.user_info_item}><h1>{props.profile.fullName}</h1></li>
                     <li className={s.user_info_item}>Date of Birth: 2 april</li>
                     <li className={s.user_info_item}>City: Minsk</li>
@@ -27,4 +30,4 @@ const User_info = (props) => {
         </div>
     )
 }
-export default User_info;
+export default Profile_info;
