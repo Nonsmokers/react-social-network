@@ -18,7 +18,8 @@ const Profile_info = (props) => {
             </div>
             <div className={s.user_info}>
                 <ul className={s.user_info_list}>
-                    <li className={s.user_info_item}><Profile_status status={'Hello, i am boss'} /></li>
+                    <li className={s.user_info_item}><Profile_status status={props.status}
+                                                                     update_status={props.update_status}/></li>
 
                     <li className={s.user_info_item}><h1>{props.profile.fullName}</h1></li>
                     <li className={s.user_info_item}>Date of Birth: 2 april</li>

@@ -6,7 +6,7 @@ import Posts_area_container from './Posts_area/Post_area_container';
 const Profile = (props) => {
     return (
         <section className={s.wrapper}>
-            <Profile_info profile={props.profile}/>
+            <Profile_info profile={props.profile} status={props.status} update_status={props.update_status} />
             <Posts_area_container store={props.store}/>
         </section>
     )

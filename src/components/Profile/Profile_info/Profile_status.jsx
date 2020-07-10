@@ -1,19 +1,27 @@
 import React from 'react';
-import s from './Profile_info.module.css'
 
 class Profile_status extends React.Component {
     state = {
         edit_mode: false,
+        status: this.props.status,
     }
+    on_status_change = (e) => {
+        this.setState({
+            status: e.currentTarget.value
+        })
+    }
+
     activate_edit_mode() {
         this.setState({
             edit_mode: true,
         })
     }
+
     deactivate_edit_mode() {
         this.setState({
             edit_mode: false,
         })
+        this.props.update_status(this.state.status);
     }
 
     render() {
@@ -26,8 +34,10 @@ class Profile_status extends React.Component {
                 <div>
                     {(this.state.edit_mode) &&
                     <input autoFocus={true}
+                           onChange={this.on_status_change}
                            onBlur={this.deactivate_edit_mode.bind(this)}
-                           value={this.props.status}></input>}
+                           value={this.state.status}>
+                    </input>}
                 </div>
             </>
         )

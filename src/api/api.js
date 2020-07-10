@@ -4,7 +4,7 @@ import React from "react";
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-    headers: {"API-KEY": "3c39d918-4ac3-451c-8bf8-6101894221da"}
+    headers: {"API-KEY": "3c39d918-4ac3-451c-8bf8-6101894221da"},
 })
 
 export const usersAPI = {
@@ -14,9 +14,7 @@ export const usersAPI = {
                 return response.data
             });
     },
-    get_profile(user_id) {
-        return instance.get(`profile/` + user_id)
-    },
+
     unfollow(user_id) {
         return instance.delete(`follow/${user_id}`)
     },
@@ -24,12 +22,21 @@ export const usersAPI = {
         return instance.post(`follow/${user_id}`)
     }
 }
-export const authAPI = {
-    me(){
-      return instance.get(`auth/me`)
+
+export const profileAPI = {
+    get_profile(user_id) {
+        return instance.get(`profile/${user_id}`)
+    },
+    get_status(user_id) {
+        return instance.get(`profile/status/${user_id}`)
+    },
+    update_status(status) {
+        return instance.put(`profile/status`, {status: status})
     }
 }
 
-//создать методы объекта, потом допилю
-
-
+export const authAPI = {
+    me() {
+        return instance.get(`auth/me`)
+    }
+}

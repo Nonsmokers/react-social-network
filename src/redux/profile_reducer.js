@@ -1,8 +1,10 @@
-import {usersAPI} from "../api/api";
+import {profileAPI} from "../api/api";
 
 const ADD_POST = 'ADD_POST';
 const UPDATE_POST = 'UPDATE_POST';
-const SET_USER_PROFILE = 'SET_USER_PROFILE'
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_STATUS = 'SET_STATUS';
+
 
 let initial_state = {
     posts: [
@@ -12,6 +14,7 @@ let initial_state = {
     ],
     new_post: '',
     profile: null,
+    status: '',
 }
 
 const profile_reducer = (state = initial_state, action) => {
@@ -29,20 +32,50 @@ const profile_reducer = (state = initial_state, action) => {
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
+        case SET_STATUS: {
+            return {...state, status: action.status}
+        }
         default:
             return state;
     }
 }
 
-export const add_post_action_creator = () => {return {type: ADD_POST}}
-export const update_post_action_creator = (new_text) => {return {type: UPDATE_POST, text: new_text}}
-export const set_user_profile = (profile) => {return {type: SET_USER_PROFILE, profile}}
+export const add_post_action_creator = () => {
+    return {type: ADD_POST}
+}
+export const update_post_action_creator = (new_text) => {
+    return {type: UPDATE_POST, text: new_text}
+}
+export const set_user_profile = (profile) => {
+    return {type: SET_USER_PROFILE, profile}
+}
+export const set_status = (status) => {
+    return {type: SET_STATUS, status}
+}
 
 export const get_user_profile = (user_id) => {
     return (dispatch) => {
-        usersAPI.get_profile(user_id)
+        profileAPI.get_profile(user_id)
             .then(response => {
                 dispatch(set_user_profile(response.data))
+            })
+    }
+}
+export const get_status = (user_id) => {
+    return (dispatch) => {
+        profileAPI.get_status(user_id)
+            .then(response => {
+                dispatch(set_status(response.data))
+            })
+    }
+}
+export const update_status = (status) => {
+    return (dispatch) => {
+        profileAPI.update_status(status)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(update_status(response.data))
+                }
             })
     }
 }
