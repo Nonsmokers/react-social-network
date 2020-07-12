@@ -1,7 +1,6 @@
 import {profileAPI} from "../api/api";
 
 const ADD_POST = 'ADD_POST';
-const UPDATE_POST = 'UPDATE_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 
@@ -20,14 +19,8 @@ let initial_state = {
 const profile_reducer = (state = initial_state, action) => {
     switch (action.type) {
         case ADD_POST: {
-            let new_post = {
-                id: 5,
-                message: state.new_post
-            };
-            return {...state, posts: [...state.posts, new_post], new_post: '',};
-        }
-        case UPDATE_POST: {
-            return {...state, new_post: action.text};
+            let new_post = {id: 5, message: action.new_post};
+            return {...state, posts: [...state.posts, new_post]};
         }
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
@@ -40,11 +33,8 @@ const profile_reducer = (state = initial_state, action) => {
     }
 }
 
-export const add_post_action_creator = () => {
-    return {type: ADD_POST}
-}
-export const update_post_action_creator = (new_text) => {
-    return {type: UPDATE_POST, text: new_text}
+export const add_post_action_creator = (new_post) => {
+    return {type: ADD_POST, new_post}
 }
 export const set_user_profile = (profile) => {
     return {type: SET_USER_PROFILE, profile}
@@ -53,31 +43,27 @@ export const set_status = (status) => {
     return {type: SET_STATUS, status}
 }
 
-export const get_user_profile = (user_id) => {
-    return (dispatch) => {
-        profileAPI.get_profile(user_id)
-            .then(response => {
-                dispatch(set_user_profile(response.data))
-            })
-    }
+export const get_user_profile = (user_id) => (dispatch) => {
+    profileAPI.get_profile(user_id)
+        .then(response => {
+            dispatch(set_user_profile(response.data))
+        })
 }
-export const get_status = (user_id) => {
-    return (dispatch) => {
-        profileAPI.get_status(user_id)
-            .then(response => {
-                dispatch(set_status(response.data))
-            })
-    }
+
+export const get_status = (user_id) => (dispatch) => {
+    profileAPI.get_status(user_id)
+        .then(response => {
+            dispatch(set_status(response.data))
+        })
 }
-export const update_status = (status) => {
-    return (dispatch) => {
-        profileAPI.update_status(status)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(update_status(response.data))
-                }
-            })
-    }
+
+export const update_status = (status) => (dispatch) => {
+    profileAPI.update_status(status)
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(set_status(status))
+            }
+        })
 }
 
 export default profile_reducer;

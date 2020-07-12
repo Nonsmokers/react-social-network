@@ -3,45 +3,49 @@ import s from './Dialogs.module.css';
 import Dialog_Item from './Dialog_item/Dialog_Item'
 import Message from './Message/Message'
 import {Redirect} from "react-router-dom";
+import {Field, reduxForm} from "redux-form";
+
+//потом вынести в компонетнту
+const Add_message_form = (props) => {
+    return <form onSubmit={props.handleSubmit} className={s.item_input}>
+        <Field component={'input'}
+               name={'new_message'}
+               className={s.item_area}
+               placeholder="Write your message here..."/>
+        <button className={s.item_button}>+</button>
+    </form>
+}
+
+const Dialogs_form_redux = reduxForm({
+    form: 'Dialogs',
+})(Add_message_form)
+
 
 const Dialogs = (props) => {
+    let state = props.dialogs_page;
 
-  let state = props.dialogs_page;
+    let dialogs_elements = state.dialogs.map((d) => <Dialog_Item name={d.name} key={d.id} id={d.id}/>)
+    let messages_elements = state.messages.map((m) => <Message message={m.message} key={m.id}/>)
 
-  let dialogs_elements = state.dialogs.map((d) => <Dialog_Item name={d.name} key={d.id} id={d.id} />)
-  let messages_elements = state.messages.map((m) => <Message message={m.message} key={m.id}/>)
-  let new_message_text = state.new_message_text;
+    let add_new_message = (formData) => {
+        props.send_message(formData.new_message);
+    }
 
-  let add_message = () => {
-    props.send_message();
-  }
+    if (!props.is_auth) {
+        return <Redirect to={'/login'}/>
+    }
 
-  let change_message = (e) => {
-    let new_text = e.target.value;
-    props.update_message(new_text);
-  }
-
-  if(!props.is_auth){
-    return <Redirect to={'/login'} />
-  }
-
-  return (
-    <div className={s.wrapper}>
-      <div className={s.list}>
-        {dialogs_elements}
-      </div>
-      <div className={s.message_block}>
-        {messages_elements}
-        <div className={s.item_input}>
-          <textarea onChange={change_message}
-            className={s.item_area}
-            type="textarea"
-            value={new_message_text}
-            placeholder="Write your message here..." />
-          <button onClick={add_message} className={s.item_button} type="submit">+</button>
+    return (
+        <div className={s.wrapper}>
+            <div className={s.list}>
+                {dialogs_elements}
+            </div>
+            <div className={s.message_block}>
+                {messages_elements}
+                <Dialogs_form_redux onSubmit={add_new_message}/>
+            </div>
         </div>
-      </div>
-    </div>
-  )
+    )
 }
 export default Dialogs;
+

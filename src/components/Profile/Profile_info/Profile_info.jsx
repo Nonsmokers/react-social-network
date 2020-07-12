@@ -1,8 +1,5 @@
 import React from 'react';
 import s from './Profile_info.module.css'
-/*
-import user_icon from '../../../assets/img/user-icon.png';
-*/
 import CircularProgress from "@material-ui/core/CircularProgress";
 import user_icon from "../../../assets/img/user-icon.png";
 import Profile_status from "./Profile_status";
