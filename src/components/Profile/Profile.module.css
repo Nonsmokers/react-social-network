@@ -47,10 +47,10 @@
   background: rgb(245, 247, 255);
   color:rgb(82, 82, 75);
   border-radius: 10px;
-  box-shadow: 0px -5px 50px rgba(60, 79, 143, 0.4);
+  box-shadow: 0 -5px 50px rgba(60, 79, 143, 0.4);
 }
 .item_button{
-  height: 70%;
+  height: 35%;
   width: 60px;
   position: absolute;
   top: 16%;

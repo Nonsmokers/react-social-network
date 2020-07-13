@@ -1,3 +1,21 @@
+.wrapper{
+    width: 100%;
+    height: 500px;
+}
 .form_wrapper{
-    margin-left: 5%;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+.form{
+    width: 200px;
+    height: auto;
+}
+.tittle{
+    display: flex;
+    justify-content: center;
+}
+.remember{
+    display: flex;
 }

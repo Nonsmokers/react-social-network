@@ -6,6 +6,7 @@ import message from '../../assets/img/mail.png'
 import music from '../../assets/img/earphones.png'
 import world from '../../assets/img/world.png'
 import {NavLink} from 'react-router-dom';
+import Button from "@material-ui/core/Button";
 
 const Header = (props) => {
     return (
@@ -32,7 +33,11 @@ const Header = (props) => {
                 </ul>
             </nav>
             <div className={s.login_wrapper}>
-                {props.is_auth ? props.login
+                {props.is_auth ?
+                    <div>
+                        {props.login} - <Button onClick={props.logout}
+                                                variant="contained">Log out</Button>
+                    </div>
                     : <NavLink to={'/login'}>Login</NavLink>
                 }
             </div>

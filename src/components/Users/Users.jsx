@@ -36,10 +36,14 @@ const Users = (props) => {
                     <div>
                         {u.followed ?
                             <Button disabled={props.following_in_progress.some(id => id === u.id)}
+                                    color="primary"
+                                    variant="contained"
                                     onClick={() => {
                                         props.unfollow(u.id)
                                     }}> unfollow </Button>
                             : <Button disabled={props.following_in_progress.some(id => id === u.id)}
+                                      color="primary"
+                                      variant="contained"
                                       onClick={() => {
                                           props.follow(u.id)
                                       }}> follow</Button>
