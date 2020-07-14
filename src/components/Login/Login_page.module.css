@@ -20,6 +20,6 @@
     display: flex;
 }
 .error{
-    border: #F15B42 1px solid;
+    border: solid #F15B42 2px;
     color: #F15B42;
 }

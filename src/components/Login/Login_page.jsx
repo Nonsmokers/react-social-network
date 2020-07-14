@@ -1,7 +1,7 @@
 import React from "react";
 import s from './Login_page.module.css'
 import {Field, reduxForm} from "redux-form";
-import {input_form} from "../common/Form_controls/Forms_controls";
+import { input_form} from "../common/Form_controls/Forms_controls";
 import {required} from "../../utils/validators/validators";
 import {connect} from "react-redux";
 import {login} from "../../redux/auth_reducer";
@@ -42,7 +42,7 @@ let Login_form = (props) => {
 }
 
 const Login_form_redux = reduxForm({
-    form: 'Login',
+    form: 'login',
 })(Login_form)
 
 

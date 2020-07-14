@@ -4,7 +4,7 @@ import s from "./Form_controls.module.css";
 const Form_control = ({input, meta,child, ...props}) => {
     const has_error = meta.touched && meta.error
     return (
-        <div className={s.form_control + ' ' + (has_error ? s.error : ' ')}>
+        <div className={s.form_control + ' ' + (has_error ? s.error : '')}>
             <div>
                 {props.children}
             </div>
