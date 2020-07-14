@@ -19,3 +19,7 @@
 .remember{
     display: flex;
 }
+.error{
+    border: #F15B42 1px solid;
+    color: #F15B42;
+}

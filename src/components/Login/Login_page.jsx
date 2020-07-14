@@ -27,6 +27,9 @@ let Login_form = (props) => {
             <div>
                 <button> Login</button>
             </div>
+            {props.error && <div className={s.error}>
+                {props.error}
+            </div>}
             <div>
                 <span>Forgot</span>
                 <a>Username / Password?</a>
@@ -47,8 +50,8 @@ let Login = (props) => {
     const onSubmit = (formData) => {
         props.login(formData.email, formData.password, formData.rememberMe)
     }
-    if(props.is_auth){
-        return <Redirect to={'/profile'} />
+    if (props.is_auth) {
+        return <Redirect to={'/profile'}/>
     }
 
     return <div className={s.wrapper}>
@@ -58,7 +61,7 @@ let Login = (props) => {
         </div>
     </div>
 }
-const mapStateToProps = (state) =>({
+const mapStateToProps = (state) => ({
     is_auth: state.auth.is_auth
 })
 
