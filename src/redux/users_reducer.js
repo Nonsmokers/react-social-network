@@ -75,7 +75,7 @@ export const set_total_users_count = (total_user_count) => ({type: SET_TOTAL_USE
 export const toggle_is_fetching = (is_fetching) => ({type: TOGGLE_IS_FETCHING, is_fetching})
 export const toggle_following_in_progress = (is_fetching, id) => ({type: TOGGLE_IS_FOLLOWING, is_fetching, id})
 
-export const get_users = (page, page_size) => {
+export const request_users = (page, page_size) => {
     return (dispatch) => {
         dispatch(toggle_is_fetching(true));
         dispatch(set_current_page(page));
