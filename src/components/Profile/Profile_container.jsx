@@ -28,11 +28,11 @@ class Profile_container extends React.Component {
 let mapStateToProps = (state) => ({
     profile: state.profile_page.profile,
     status: state.profile_page.status,
-    authorized_id: state.id,
+    authorized_id: state.auth.id,
     is_auth: state.auth.is_auth
 })
 
 export default compose(
-    connect(mapStateToProps, {get_user_profile, get_status, update_status}),
-    withRouter
+    withRouter,
+    connect(mapStateToProps, {get_user_profile, get_status, update_status})
 )(Profile_container)

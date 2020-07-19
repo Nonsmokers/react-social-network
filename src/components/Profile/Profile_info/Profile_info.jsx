@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Profile_info.module.css'
 import CircularProgress from "@material-ui/core/CircularProgress";
 import user_icon from "../../../assets/img/user-icon.png";
-import Profile_status from "./Profile_status";
+import Profile_status_with_hoocks from "./Profile_status_with_hoocks";
 
 const Profile_info = (props) => {
     if (!props.profile) {
@@ -11,12 +11,14 @@ const Profile_info = (props) => {
     return (
         <div className={s.user}>
             <div className={s.user_icon}>
-                <img src={props.profile.photos.large != null ? props.profile.photos.large : user_icon} alt='user'/>
+                <img src={props.profile.photos.large ? props.profile.photos.large : user_icon} alt='user'/>
             </div>
             <div className={s.user_info}>
                 <ul className={s.user_info_list}>
-                    <li className={s.user_info_item}><Profile_status status={props.status}
-                                                                     update_status={props.update_status}/></li>
+                    <li className={s.user_info_item}>
+                        <Profile_status_with_hoocks status={props.status}
+                                                    update_status={props.update_status}/>
+                    </li>
 
                     <li className={s.user_info_item}><h1>{props.profile.fullName}</h1></li>
                     <li className={s.user_info_item}>Date of Birth: 2 april</li>

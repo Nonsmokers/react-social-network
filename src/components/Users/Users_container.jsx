@@ -9,7 +9,7 @@ import {with_auth_redirect} from "../hoc/with_auth_redirect";
 import {compose} from "redux";
 import {
     get_current_page, get_following_in_progress,
-    get_is_fetching, get_page_size, get_total_users_count, get_users
+    get_is_fetching, get_page_size, get_total_users_count, get_users_super_selector
 } from "../../redux/users_selectors";
 
 class users_container extends React.Component {
@@ -51,7 +51,7 @@ class users_container extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: get_users(state),
+        users: get_users_super_selector(state),
         page_size: get_page_size(state),
         total_users_count: get_total_users_count(state),
         current_page: get_current_page(state),
