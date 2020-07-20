@@ -1,9 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 const Profile_status_with_hoocks = (props) => {
     let [edit_mode, set_edit_mode] = useState(false);
     let [status, set_status] = useState(props.status);
-    ;
+    
+
+    useEffect(()=>{
+        set_status(props.status)
+        },[])
 
     const activate_edit_mode = () => {
         set_edit_mode(true)

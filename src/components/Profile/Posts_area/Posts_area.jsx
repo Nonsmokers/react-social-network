@@ -19,11 +19,10 @@ const Post_area_form = (props) => {
     </form>
 }
 
-const Post_area_form_redux = reduxForm({
-    form: 'Profile_posts',
-})(Post_area_form)
+const Post_area_form_redux = reduxForm({form: 'Profile_posts'})(Post_area_form)
 
-const Posts_area = (props) => {
+const Posts_area = React.memo((props) => {
+
     let post_elements = props.posts.map(p => <Post message={p.message} id={p.id}/>)
 
     let add_new_post = (formData) => {
@@ -39,6 +38,7 @@ const Posts_area = (props) => {
             {post_elements}
         </div>
     )
-}
+})
+
 
 export default Posts_area;
