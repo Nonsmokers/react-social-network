@@ -24,7 +24,7 @@ class users_container extends React.Component {
     render() {
         return <>
             {this.props.is_fetching ? <CircularProgress/> : null}
-            <Users total_users_count={this.props.total_users_count}
+            <Users total_item_count={this.props.total_users_count}
                    page_size={this.props.page_size}
                    current_page={this.props.current_page}
                    change_page={this.change_page}
@@ -36,18 +36,6 @@ class users_container extends React.Component {
         </>
     }
 }
-
-
-/*let mapStateToProps = (state) => {
-    return {
-        users: state.users_page.users,
-        page_size: state.users_page.page_size,
-        total_users_count: state.users_page.total_users_count,
-        current_page: state.users_page.current_page,
-        is_fetching: state.users_page.is_fetching,
-        following_in_progress: state.users_page.following_in_progress
-    }
-}*/
 
 let mapStateToProps = (state) => {
     return {

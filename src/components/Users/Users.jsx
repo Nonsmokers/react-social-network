@@ -6,23 +6,28 @@ import {NavLink} from 'react-router-dom';
 
 const Users = (props) => {
 
-    let page_count = Math.ceil(props.total_users_count / props.page_size);
+    let page_count = Math.ceil(props.total_item_count / props.page_size);
 
     let pages = [];
     for (let i = 1; i <= page_count; i++) {
         pages.push(i)
     }
 
+    let handlePageChange=(current_page) => {
+        console.log(`active page is ${current_page}`);
+        this.setState({activePage: current_page});
+    }
+
     return <>
         <div className={s.users_page}>
-            <div>
+            {<div>
                 {pages.map(p => {
                     return <span className={props.current_page === p && s.active_page}
                                  onClick={() => {
                                      props.change_page(p)
                                  }}>{p}</span>
                 })}
-            </div>
+            </div>}
             {
                 props.users.map(u => <div key={u.id}>
                 <span>

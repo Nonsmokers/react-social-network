@@ -1,4 +1,4 @@
-import {profileAPI} from "../api/api";
+import {authAPI, profileAPI} from "../api/api";
 
 const ADD_POST = 'ADD_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -43,27 +43,21 @@ export const set_status = (status) => {
     return {type: SET_STATUS, status}
 }
 
-export const get_user_profile = (user_id) => (dispatch) => {
-    profileAPI.get_profile(user_id)
-        .then(response => {
-            dispatch(set_user_profile(response.data))
-        })
+export const get_user_profile = (user_id) => async (dispatch) => {
+    let response = await profileAPI.get_profile(user_id)
+    dispatch(set_user_profile(response.data))
 }
 
-export const get_status = (user_id) => (dispatch) => {
-    profileAPI.get_status(user_id)
-        .then(response => {
-            dispatch(set_status(response.data))
-        })
+export const get_status = (user_id) => async (dispatch) => {
+    let response = await profileAPI.get_status(user_id)
+    dispatch(set_status(response.data))
 }
 
-export const update_status = (status) => (dispatch) => {
-    profileAPI.update_status(status)
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(set_status(status))
-            }
-        })
+export const update_status = (status) => async (dispatch) => {
+    let response = await profileAPI.update_status(status)
+    if (response.data.resultCode === 0) {
+        dispatch(set_status(status))
+    }
 }
 
 export default profile_reducer;
