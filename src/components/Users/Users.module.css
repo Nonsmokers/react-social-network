@@ -1,0 +1,17 @@
+span{
+    cursor: pointer;
+}
+.user_photo{
+    width: 100px;
+    height: 100px;
+}
+.active_page{
+    font-size: 20px;
+    font-weight: bold;
+}
+.users_page{
+    margin-left: 5%;
+}
+.hidden{
+    background: red;
+}

@@ -1,0 +1,25 @@
+.wrapper{
+    width: 100%;
+    height: 500px;
+}
+.form_wrapper{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+.form{
+    width: 200px;
+    height: auto;
+}
+.tittle{
+    display: flex;
+    justify-content: center;
+}
+.remember{
+    display: flex;
+}
+.error{
+    border: solid #F15B42 2px;
+    color: #F15B42;
+}
