@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/react_project_social_network/static/css/main.621ea55e.chunk.css",
+    "main.js": "/react_project_social_network/static/js/main.b6216be2.chunk.js",
+    "main.js.map": "/react_project_social_network/static/js/main.b6216be2.chunk.js.map",
+    "runtime-main.js": "/react_project_social_network/static/js/runtime-main.efa3cf4c.js",
+    "runtime-main.js.map": "/react_project_social_network/static/js/runtime-main.efa3cf4c.js.map",
+    "static/js/2.52caf23b.chunk.js": "/react_project_social_network/static/js/2.52caf23b.chunk.js",
+    "static/js/2.52caf23b.chunk.js.map": "/react_project_social_network/static/js/2.52caf23b.chunk.js.map",
+    "index.html": "/react_project_social_network/index.html",
+    "precache-manifest.ca693dabe1b400854d2d6bea46cf97d2.js": "/react_project_social_network/precache-manifest.ca693dabe1b400854d2d6bea46cf97d2.js",
+    "service-worker.js": "/react_project_social_network/service-worker.js",
+    "static/css/main.621ea55e.chunk.css.map": "/react_project_social_network/static/css/main.621ea55e.chunk.css.map",
+    "static/js/2.52caf23b.chunk.js.LICENSE.txt": "/react_project_social_network/static/js/2.52caf23b.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/react_project_social_network/static/media/logo.ee7cd8ed.svg",
+    "static/media/user-icon.png": "/react_project_social_network/static/media/user-icon.0e1c8a48.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.efa3cf4c.js",
+    "static/js/2.52caf23b.chunk.js",
+    "static/css/main.621ea55e.chunk.css",
+    "static/js/main.b6216be2.chunk.js"
+  ]
+}
