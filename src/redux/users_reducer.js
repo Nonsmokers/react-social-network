@@ -1,4 +1,4 @@
-import {authAPI, usersAPI} from "../api/api";
+import {usersAPI} from "../api/api";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -11,7 +11,7 @@ const TOGGLE_IS_FOLLOWING = 'TOGGLE_IS_FOLLOWING';
 let initial_state = {
     users: [],
     page_size: 20,
-    total_users_count: 1000,
+    total_users_count: 600,
     current_page: 1,
     is_fetching: true,
     following_in_progress: []

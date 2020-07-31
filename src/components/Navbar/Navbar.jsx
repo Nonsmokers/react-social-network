@@ -15,10 +15,10 @@ const Navbar = () =>{
             <NavLink to='/Dialogs' activeClassName={s.active}>Dialogs</NavLink>
           </li>
           <li className={s.item}>
-            <NavLink to=''>News</NavLink>
+            <NavLink to='/users' activeClassName={s.active}>Users</NavLink>
             </li>
           <li className={s.item}>
-            <NavLink to=''>Friends</NavLink>
+            <NavLink to=''>Followers</NavLink>
             </li>
           <li className={s.item}>
             <NavLink to=''>Photos</NavLink>

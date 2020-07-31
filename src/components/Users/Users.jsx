@@ -13,19 +13,13 @@ const Users = (props) => {
         pages.push(i)
     }
 
-    let handlePageChange=(current_page) => {
-        console.log(`active page is ${current_page}`);
-        this.setState({activePage: current_page});
-    }
-
     return <>
         <div className={s.users_page}>
-            {<div>
+            {<div className={s.users_count}>
                 {pages.map(p => {
                     return <span className={props.current_page === p && s.active_page}
-                                 onClick={() => {
-                                     props.change_page(p)
-                                 }}>{p}</span>
+                                 onClick={() => {props.change_page(p)}}
+                           >{p}</span>
                 })}
             </div>}
             {

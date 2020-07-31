@@ -1,5 +1,6 @@
-span{
+.users_count span{
     cursor: pointer;
+    margin-right: 2px;
 }
 .user_photo{
     width: 100px;
